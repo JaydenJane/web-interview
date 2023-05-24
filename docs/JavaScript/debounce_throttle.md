@@ -77,7 +77,10 @@ function throttled(fn, delay) {
             fn.apply(context, args)
             starttime = Date.now()
         } else {
-            timer = setTimeout(fn, remaining);
+            timer = setTimeout(() => {
+                fn.apply(context, args);
+                starttime = Date.now();
+            }, remaining);
         }
     }
 }
